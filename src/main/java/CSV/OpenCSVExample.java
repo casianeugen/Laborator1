@@ -9,7 +9,7 @@ public class OpenCSVExample {
     public static void main(String[] args) {
         CSVReader csvReader = null;
         try{
-            csvReader = new CSVReader(new FileReader("plants.csv"));
+            csvReader = new CSVReader(new FileReader("employees-table.csv"));
             String [] nextLine;
             while ((nextLine = csvReader.readNext()) != null){
                 for(String token : nextLine){

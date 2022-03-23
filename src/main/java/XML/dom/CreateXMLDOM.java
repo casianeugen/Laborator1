@@ -23,11 +23,11 @@ public class CreateXMLDOM {
             doc.appendChild(rootElement);
 
             // 1 child of document
-            Element celestialObjects = doc.createElement("celestial-objects");
+            Element celestialObjects = doc.createElement("kingdom");
             rootElement.appendChild(celestialObjects);
 
                 // 1 child of celestialObjects
-                Element solarSystem = doc.createElement("solar-system");
+                Element solarSystem = doc.createElement("ljjh");
                 celestialObjects.appendChild(solarSystem);
 
                     // 1 child of solarSystem

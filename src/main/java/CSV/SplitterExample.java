@@ -1,7 +1,6 @@
 package CSV;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -9,7 +8,7 @@ public class SplitterExample {
     public static void main(String[] args)
     {
         //Input file which needs to be parsed
-        String fileToParse = "plants.csv";
+        String fileToParse = "employees-table.csv";
         BufferedReader fileReader = null;
 
         //Delimiter used in CSV file
