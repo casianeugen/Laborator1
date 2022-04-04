@@ -12,7 +12,7 @@ import java.io.File;
 public class SaxParserDemo {
     public static void main(String[] args) {
         try {
-            File inputFile = new File("plantsSax.xml");
+            File inputFile = new File("plants.xml");
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
             UserHandler userHandler = new UserHandler();
@@ -24,48 +24,42 @@ public class SaxParserDemo {
 }
 
 class UserHandler extends DefaultHandler{
-    boolean bFirstName = false;
-    boolean bLastName = false;
-    boolean bNickName = false;
-    boolean bMarks = false;
+    boolean bType = false;
+    boolean bFamily = false;
+    boolean bSpecies = false;
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        if(qName.equalsIgnoreCase("student")){
-            String rollNo = attributes.getValue("rollno");
+        if(qName.equalsIgnoreCase("tag2")){
+            String rollNo = attributes.getValue("tag2ID");
             System.out.println("Roll No : "+rollNo);
-        }else if (qName.equalsIgnoreCase("firstname")){
-            bFirstName = true;
-        }else if (qName.equalsIgnoreCase("lastname")){
-            bLastName = true;
-        }else if (qName.equalsIgnoreCase("nickname")){
-            bNickName = true;
-        }else if (qName.equalsIgnoreCase("marks")){
-            bMarks = true;
+        }else if (qName.equalsIgnoreCase("type")){
+            bType = true;
+        }else if (qName.equalsIgnoreCase("family")){
+            bFamily = true;
+        }else if (qName.equalsIgnoreCase("species")){
+            bSpecies = true;
         }
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        if(qName.equalsIgnoreCase("student")){
+        if(qName.equalsIgnoreCase("tag2")){
             System.out.println("End element : "+ qName);
         }
     }
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        if(bFirstName){
-            System.out.println("First name: "+new String(ch, start, length));
-            bFirstName = false;
-        }else if (bLastName){
-            System.out.println("Last name: "+new String(ch, start, length));
-            bLastName = false;
-        }else if (bNickName){
-            System.out.println("Nick name: "+new String(ch, start, length));
-            bNickName = false;
-        }else if (bMarks){
-            System.out.println("Marks: "+new String(ch, start, length));
-            bMarks = false;
+        if(bType){
+            System.out.println("Type: "+new String(ch, start, length));
+            bType = false;
+        }else if (bFamily){
+            System.out.println("Family: "+new String(ch, start, length));
+            bFamily = false;
+        }else if (bSpecies){
+            System.out.println("Specie: "+new String(ch, start, length));
+            bSpecies = false;
         }
     }
 }

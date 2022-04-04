@@ -12,14 +12,14 @@ import java.io.File;
 public class QueryXMLDOM {
     public static void main(String[] args) {
         try{
-            File inputFile = new File("cars.xml");
+            File inputFile = new File("plants.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
             System.out.print("Root element : ");
             System.out.println(doc.getDocumentElement().getNodeName());
-            NodeList nList = doc.getElementsByTagName("supercars");
+            NodeList nList = doc.getElementsByTagName("category");
             System.out.println("------------------------------");
 
             for(int temp = 0; temp < nList.getLength(); temp++){
@@ -29,19 +29,19 @@ public class QueryXMLDOM {
 
                 if(nNode.getNodeType() == Node.ELEMENT_NODE){
                     Element eElment = (Element) nNode;
-                    System.out.print("company : ");
-                    System.out.println(eElment.getAttribute("company"));
-                    NodeList carNameList = eElment.getElementsByTagName("carname");
+                    System.out.print("\nplant : ");
+                    System.out.println(eElment.getAttribute("tag2ID"));
+                    NodeList plantNameList = eElment.getElementsByTagName("001");
 
-                    for(int count = 0; count < carNameList.getLength(); count++){
-                        Node node1 = carNameList.item(count);
+                    for(int count = 0; count < plantNameList.getLength(); count++){
+                        Node node1 = plantNameList.item(count);
 
                         if(node1.getNodeType() == Node.ELEMENT_NODE){
-                            Element car = (Element) node1;
-                            System.out.println("car name : "
-                                    +car.getTextContent());
-                            System.out.println("car type : "
-                                    +car.getAttribute("type"));
+                            Element plant = (Element) node1;
+                            System.out.println("plant type : "
+                                    +plant.getTextContent());
+                            System.out.println("plant species : "
+                                    +plant.getAttribute("species"));
                         }
                     }
                 }

@@ -11,11 +11,11 @@ import java.io.File;
 public class SAXQueryDemo {
     public static void main(String[] args) {
         try {
-            File inputFile = new File("studentSax.xml");
+            File inputFile = new File("plants.xml");
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
-            UserHandler2 userhandler = new UserHandler2();
-            saxParser.parse(inputFile, userhandler);
+            UserHandler2 userHandler = new UserHandler2();
+            saxParser.parse(inputFile, userHandler);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -24,10 +24,9 @@ public class SAXQueryDemo {
 
 class UserHandler2 extends DefaultHandler {
 
-    boolean bFirstName = false;
-    boolean bLastName = false;
-    boolean bNickName = false;
-    boolean bMarks = false;
+    boolean bType = false;
+    boolean bFamily = false;
+    boolean bSpecies = false;
     String rollNo = null;
 
     @Override
@@ -35,22 +34,18 @@ class UserHandler2 extends DefaultHandler {
                              String localName, String qName, Attributes attributes)
             throws SAXException {
 
-        if (qName.equalsIgnoreCase("student")) {
-            rollNo = attributes.getValue("rollno");
+        if (qName.equalsIgnoreCase("plant")) {
+            rollNo = attributes.getValue("tag2ID");
         }
-//        System.out.println("rollNo" +rollNo);
-        if("393".equals(rollNo) && qName.equalsIgnoreCase("student")) {
+        if("001".equals(rollNo) && qName.equalsIgnoreCase("plant")) {
             System.out.println("Start Element :" + qName);
         }
-        if (qName.equalsIgnoreCase("firstname")) {
-            bFirstName = true;
-        } else if (qName.equalsIgnoreCase("lastname")) {
-            bLastName = true;
-        } else if (qName.equalsIgnoreCase("nickname")) {
-            bNickName = true;
-        }
-        else if (qName.equalsIgnoreCase("marks")) {
-            bMarks = true;
+        if (qName.equalsIgnoreCase("Type")) {
+            bType = true;
+        } else if (qName.equalsIgnoreCase("Family")) {
+            bFamily = true;
+        } else if (qName.equalsIgnoreCase("Species")) {
+            bSpecies = true;
         }
     }
 
@@ -58,10 +53,7 @@ class UserHandler2 extends DefaultHandler {
     public void endElement(
             String uri, String localName, String qName) throws SAXException {
 
-        if (qName.equalsIgnoreCase("student")) {
-
-            if(("393").equals(rollNo)
-                    && qName.equalsIgnoreCase("student"))
+        if (qName.equalsIgnoreCase("plant")) {
                 System.out.println("End Element :" + qName);
         }
     }
@@ -71,19 +63,15 @@ class UserHandler2 extends DefaultHandler {
     public void characters(
             char ch[], int start, int length) throws SAXException {
 
-        if (bFirstName && ("393").equals(rollNo)) {
-            //age element, set Employee age
-            System.out.println("First Name: " + new String(ch, start, length));
-            bFirstName = false;
-        } else if (bLastName && ("393").equals(rollNo)) {
-            System.out.println("Last Name: " + new String(ch, start, length));
-            bLastName = false;
-        } else if (bNickName && ("393").equals(rollNo)) {
-            System.out.println("Nick Name: " + new String(ch, start, length));
-            bNickName = false;
-        } else if (bMarks && ("393").equals(rollNo)) {
-            System.out.println("Marks: " + new String(ch, start, length));
-            bMarks = false;
+        if (bType && ("001").equals(rollNo)) {
+            System.out.println("Type: " + new String(ch, start, length));
+            bType = false;
+        } else if (bFamily && ("001").equals(rollNo)) {
+            System.out.println("Family: " + new String(ch, start, length));
+            bFamily = false;
+        } else if (bSpecies && ("001").equals(rollNo)) {
+            System.out.println("Species: " + new String(ch, start, length));
+            bSpecies = false;
         }
     }
 }

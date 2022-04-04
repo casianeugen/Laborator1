@@ -12,13 +12,13 @@ import java.io.File;
 public class ParseXMLDOM {
     public static void main(String[] args) {
         try{
-            File inputFile = new File("students.xml");
+            File inputFile = new File("plants.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuider = dbFactory.newDocumentBuilder();
             Document doc = dBuider.parse(inputFile);
             doc.getDocumentElement().normalize();
             System.out.println("Root element : "+doc.getDocumentElement().getNodeName());
-            NodeList nList = doc.getElementsByTagName("student");
+            NodeList nList = doc.getElementsByTagName("category");
             System.out.println("-------------------------------");
 
             for(int temp = 0; temp < nList.getLength(); temp++){
@@ -27,32 +27,27 @@ public class ParseXMLDOM {
 
                 if(nNode.getNodeType() == Node.ELEMENT_NODE){
                     Element eElement = (Element) nNode;
-                    System.out.println("Student roll no : "
-                            +eElement.getAttribute("rollno"));
-                    System.out.println("First name : "
+                    System.out.println("Plant roll no : "
+                            +eElement.getAttribute("002"));
+                    System.out.println("Type : "
                             +eElement
-                            .getElementsByTagName("firstname")
+                            .getElementsByTagName("type")
                             .item(0)
                             .getTextContent());
-                    System.out.println("Last name : "
+                    System.out.println("Family : "
                             +eElement
-                            .getElementsByTagName("lastname")
+                            .getElementsByTagName("family")
                             .item(0)
                             .getTextContent());
-                    System.out.println("Nick name : "
+                    System.out.println("Species : "
                             +eElement
-                            .getElementsByTagName("nickname")
-                            .item(0)
-                            .getTextContent());
-                    System.out.println("Marks : "
-                            +eElement
-                            .getElementsByTagName("marks")
+                            .getElementsByTagName("species")
                             .item(0)
                             .getTextContent());
 
-                    if(eElement.getElementsByTagName("status").getLength() > 0){
-                        System.out.println("Status : "
-                                +eElement.getElementsByTagName("status")
+                    if(eElement.getElementsByTagName("description").getLength() > 0){
+                        System.out.println("Description : "
+                                +eElement.getElementsByTagName("desc")
                                 .item(0)
                                 .getTextContent());
                     }
