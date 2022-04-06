@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plants>
+    <category name="Aquatic">
+        <plant tag2ID="001">
+            <type>Submerged</type>
+            <family>Pondweed</family>
+            <species>Curly-leaf Pondweed</species>
+            <description>
+                <desc>water less than 10 feet deep</desc>
+                <desc>are rooted in the pond bottom</desc>
+                <desc>can help to add dissolved oxygen to the water</desc>
+            </description>
+        </plant>
+        <plant tag2ID="002">
+            <type>Emergents</type>
+            <family>Gramineae</family>
+            <species>Phragmites Australis</species>
+            <description>
+                <desc>includes floating emergents</desc>
+                <desc>found in wetlands and along the shoreline</desc>
+                <desc>could cause problems with accessing your pond</desc>
+            </description>
+        </plant>
+    </category>
+    <category name="Bulbs">
+        <plant tag2ID="001">
+            <type>Corms</type>
+            <family>Gladiolus</family>
+            <species>Alocasia macrorrhizos</species>
+        </plant>
+        <plant tag2ID="002">
+            <type>Tubers</type>
+            <family>Oxalis</family>
+            <species>Potato</species>
+        </plant>
+    </category>
+</plants>
